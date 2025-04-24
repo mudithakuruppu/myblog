@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { FacebookIcon, TwitterIcon, InstagramIcon } from 'lucide-react';
 export const Footer = () => {
   return <footer className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
+      <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex flex-col items-start justify-between space-y-6 md:flex-row md:items-center md:space-y-0">
           <div>
             <Link to="/" className="text-xl font-bold">
               Foodieland
@@ -13,7 +13,7 @@ export const Footer = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
-          <nav className="grid grid-cols-2 md:flex md:space-x-8 gap-4">
+          <nav className="grid grid-cols-2 gap-4 md:flex md:space-x-8">
             <Link to="/recipes" className="text-gray-500 hover:text-gray-900">
               Recipes
             </Link>
@@ -39,9 +39,9 @@ export const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-center text-sm text-gray-500">
-            © 2020 Flowbase. Powered by WebFlow
+        <div className="pt-8 mt-8 border-t border-gray-200">
+          <p className="text-sm text-center text-gray-500">
+            © 2025 Foodieland. Powered by Wixze
           </p>
         </div>
       </div>
