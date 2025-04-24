@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AdminLayout } from './components/admin/AdminLayout';
 import { Dashboard } from './components/admin/Dashboard';
@@ -20,13 +20,13 @@ export function App() {
   const handleLogout = () => {
     setIsAuthenticated(false);
   };
-  return <Router>
+  return <Router basename="/myblog/">
       <Routes>
         <Route path="/" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin/login" element={isAuthenticated ? <Navigate to="/admin/dashboard" /> : <Login onLogin={handleLogin} />} />
+        <Route path="/admin/login" element={isAuthenticated ? <Navigate to="/myblog/admin/dashboard" /> : <Login onLogin={handleLogin} />} />
         <Route path="/admin/*" element={isAuthenticated ? <AdminLayout onLogout={handleLogout}>
                 <Routes>
                   <Route path="dashboard" element={<Dashboard />} />
@@ -36,9 +36,9 @@ export function App() {
                   <Route path="categories" element={<CategoryManagement />} />
                   <Route path="media" element={<MediaManagement />} />
                   <Route path="settings" element={<Settings />} />
-                  <Route path="*" element={<Navigate to="/admin/dashboard" />} />
+                  <Route path="*" element={<Navigate to="/myblog/admin/dashboard" />} />
                 </Routes>
-              </AdminLayout> : <Navigate to="/admin/login" />} />
+              </AdminLayout> : <Navigate to="/myblog/admin/login" />} />
       </Routes>
     </Router>;
 }
