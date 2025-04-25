@@ -20,14 +20,28 @@ export function App() {
   const handleLogout = () => {
     setIsAuthenticated(false);
   };
-  return <Router basename="/myblog/">
+  return (
+    <Router basename="/myblog/">
       <Routes>
         <Route path="/" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin/login" element={isAuthenticated ? <Navigate to="/myblog/admin/dashboard" /> : <Login onLogin={handleLogin} />} />
-        <Route path="/admin/*" element={isAuthenticated ? <AdminLayout onLogout={handleLogout}>
+        <Route
+          path="/admin/login"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/admin/dashboard" />
+            ) : (
+              <Login onLogin={handleLogin} />
+            )
+          }
+        />
+        <Route
+          path="/admin/*"
+          element={
+            isAuthenticated ? (
+              <AdminLayout onLogout={handleLogout}>
                 <Routes>
                   <Route path="dashboard" element={<Dashboard />} />
                   <Route path="posts" element={<PostManagement />} />
@@ -36,9 +50,15 @@ export function App() {
                   <Route path="categories" element={<CategoryManagement />} />
                   <Route path="media" element={<MediaManagement />} />
                   <Route path="settings" element={<Settings />} />
-                  <Route path="*" element={<Navigate to="/myblog/admin/dashboard" />} />
+                  <Route path="*" element={<Navigate to="/admin/dashboard" />} />
                 </Routes>
-              </AdminLayout> : <Navigate to="/myblog/admin/login" />} />
+              </AdminLayout>
+            ) : (
+              <Navigate to="/admin/login" />
+            )
+          }
+        />
       </Routes>
-    </Router>;
+    </Router>
+  );
 }
